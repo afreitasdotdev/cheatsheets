@@ -2,5 +2,5 @@
 
 # General Tips
 
-### Enable server 
+### Enable web server
 ```python -m SimpleHTTPServer 8080```
