@@ -8,7 +8,7 @@
 
 ### G729 Free
 
-Use this url to use free g729 version. WARNING: Able to try.
+Use this url to use free g729 version. WARNING: Able to try.  
 Celeron - http://asterisk.hosting.lv/bin/codec_g729-ast130-gcc4-glibc-x86_64-barcelona.so
 
 ## General Tips
@@ -48,6 +48,7 @@ canreinvite=no
 defaultuser=1736319090
 secret=1736319090
 ignoresdpversion=yes
+```
 ```
 [entrada]
 disallow=all

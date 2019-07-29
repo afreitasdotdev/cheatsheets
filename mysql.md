@@ -9,3 +9,6 @@
 Based on http://stackoverflow.com/questions/8923114/how-to-reset-auto-increment-in-mysql
 CAUTION: Need erase all rules before.
 
+### Split InnoDB
+
+[Link](./split-innodb.md)
