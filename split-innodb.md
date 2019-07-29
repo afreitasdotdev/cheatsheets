@@ -20,7 +20,7 @@ Devido as condições do cenário, achei melhor separar o ibdata por bancos e de
 
 Isso tudo quer dizer, antes tínhamos só um arquivo com muitos gigas que contia todas as informações de todos os bancos e tabelas, armazenava todos os registros e dados, agora, o arquivo ibdata ainda existe  dentro de /var/lib/mysql, mas não com todos os dados, quem faz isso agora são diretórios com o nome do banco, ou seja, assim:
 
-snep-sc-01-matriz-discador-dac:~# ls -lha /var/lib/mysql/
+```snep-sc-01-matriz-discador-dac:~# ls -lha /var/lib/mysql/
 total 29M
 drwx------  5 mysql mysql 4,0K Set  2 08:50 .
 drwxr-xr-x 31 root  root  4,0K Abr  6  2016 ..
@@ -32,10 +32,11 @@ drwx------  2 mysql mysql 4,0K Mar 31  2016 mysql
 -rw-------  1 mysql mysql    6 Mar 31  2016 mysql_upgrade_info
 drwx------  2 mysql mysql 4,0K Mar 31  2016 performance_schema
 drwx------  2 mysql mysql 4,0K Set  2 03:12 snep25
+```
 
 Se olharmos dentro do diretório snep25, vemos o seguinte:
 
-snep-sc-01-matriz-discador-dac:~# ls -lha /var/lib/mysql/snep25/
+```snep-sc-01-matriz-discador-dac:~# ls -lha /var/lib/mysql/snep25/
 total 4,6G
 drwx------ 2 mysql mysql 4,0K Set  2 03:12 .
 drwx------ 5 mysql mysql 4,0K Set  2 08:50 ..
@@ -181,6 +182,7 @@ drwx------ 5 mysql mysql 4,0K Set  2 08:50 ..
 -rw-rw---- 1 mysql mysql 112K Set  2 00:07 voicemail_messages.ibd
 -rw-rw---- 1 mysql mysql 9,4K Set  2 00:07 voicemail_users.frm
 -rw-rw---- 1 mysql mysql 112K Set  2 00:07 voicemail_users.ibd
+```
 
 Dentro do diretório existe dois arquivos pra cada uma das tabelas do snep, um arquivo .frm que armazena a estrutura da tabela e um arquivo .ibd que salva todos os dados e informações.
 
