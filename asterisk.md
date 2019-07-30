@@ -2,6 +2,28 @@
 
 ## Asterisk CLI
 
+## SIP tips
+
+### Peers lost connection
+
+Adjust in sip.conf:
+```
+recordhistory=no
+rtautoclear=no
+ignoreregexpire=no
+```
+
+Reload confs: **rasterisk -x "sip reload"**
+
+## Asterisk Apps
+
+### Dial in 2 peers simultaneos
+
+Executar aplicação  
+Dial  
+Parâmetros  
+SIP/1900&SIP/1901|60|TWKtwk  
+
 ## Asterisk Modules
 
 ## Asterisk Codecs
@@ -11,7 +33,28 @@
 Use this url to use free g729 version. WARNING: Able to try.  
 Celeron - http://asterisk.hosting.lv/bin/codec_g729-ast130-gcc4-glibc-x86_64-barcelona.so
 
+## IAX Tips
+
+### IAX Trunk
+
+```
+[alphaville]
+host=192.168.198.1
+type=friend
+context=default
+qualify=yes
+```
+
 ## General Tips
+
+### Play MOH during call
+
+```
+ignoresdpversion=yes
+progressinband=yes
+prematuremedia=no
+```
+Reload confs: **rasterisk -x "sip reload"**
 
 ### VOXIP Tips
 
