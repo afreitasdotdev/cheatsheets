@@ -2,6 +2,50 @@
 
 ## General Tips
 
+### Debian Network names
+
+
+ - Onboard
+eno
+
+ - PCI ou PCIe identificado pelo slot
+en**s**
+
+ - PCI ou PCIe idetificado pelo localização fisica do HW
+en**p**2s0
+
+ - Usar MAC
+enx7837d1ea46da
+
+ - Wireless
+**wl**p3s0
+
+Em suma: 
+
+en = 
+wl = dispositivo wireless
+p = indica dispositivo PCI
+p**3** = Numero indica bus/barramento da placa
+s = indica slot no sistema
+s**0** = Numero indica o valor do slot
+br = Bridge
+veth = Virtual
+
+Exemplo:
+
+lspci | egrep -i  "net|ether"
+
+wlp6s0 = 03:00.0 Network controller: Intel Corporation Centrino Wireless-N 1030 [Rainbow Peak] (rev 34)
+enp3s0 = 06:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 06)
+
+
+Names incorporating Firmware/BIOS provided index numbers for on-board devices (example: eno1)
+Names incorporating Firmware/BIOS provided PCI Express hotplug slot index numbers (example: ens1)
+Names incorporating physical/geographical location of the connector of the hardware (example: enp2s0)
+Names incorporating the interfaces's MAC address (example: enx78e7d1ea46da)
+Classic, unpredictable kernel-native ethX naming (example: eth0)
+
+
 ### Random
 
 ```
