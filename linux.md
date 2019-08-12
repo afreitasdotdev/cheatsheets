@@ -8,10 +8,10 @@
  - Onboard  
 eno  
 
- - PCI ou PCIe identificado pelo slot  
+ - PCIe identificado pelo slot  
 en**s**  
 
- - PCI ou PCIe idetificado pelo localização fisica do HW  
+ - PCI idetificado pelo localização fisica do HW  
 en**p**2s0  
 
  - Usar MAC  
