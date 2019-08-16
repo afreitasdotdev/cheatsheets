@@ -79,12 +79,12 @@ Classic, unpredictable kernel-native ethX naming (example: eth0)
 #### Client
 
  - Instale o cliente NFS
-```apt-get install nfs-common
+```
+apt-get install nfs-common
 ```
 
  - Crie uma pasta pra montar
-```mkdir /var/www/sneplivre/arquivos/viaRede-POA
-```
+```mkdir /var/www/sneplivre/arquivos/viaRede-POA```
 
  - Monte e seja feliz
 ```mount 192.168.1.18:/var/www/snep/arquivos/gravacoesCTB /var/www/sneplivre/arquivos/viaRede-POA/
