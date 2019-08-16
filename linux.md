@@ -51,29 +51,36 @@ Classic, unpredictable kernel-native ethX naming (example: eth0)
 #### Server
 
  - Instala o NFS
-```apt-get install nfs-kernel-server nfs-common
+```
+apt-get install nfs-kernel-server nfs-common
 ```
 
  - Cria a pasta a ser compartilhada
-```mkdir /var/www/snep/arquivos/gravacoesCTB
+```
+mkdir /var/www/snep/arquivos/gravacoesCTB
 ```
 
  - Ceda permissão para todo mundo escrever nela
-```chown nobody:nogroup /var/www/snep/arquivos/gravacoesCTB/
 ```
-```chmod 755 /var/www/snep/arquivos/gravacoesCTB/
+chown nobody:nogroup /var/www/snep/arquivos/gravacoesCTB/
+```
+```
+chmod 755 /var/www/snep/arquivos/gravacoesCTB/
 ```
 
  - Altere o arquivo exports 
-```vi /etc/exports
+```
+vi /etc/exports
 ```
 
  - Adicione o mapeamento da pasta criada
-```/var/www/snep/arquivos/gravacoesCTB 192.168.2.18(rw,sync,no_subtree_check)
+```
+/var/www/snep/arquivos/gravacoesCTB 192.168.2.18(rw,sync,no_subtree_check)
 ```
 
  - Reinicie o NFS
-```/etc/init.d/nfs-kernel-server restart
+```
+/etc/init.d/nfs-kernel-server restart
 ```
 
 #### Client
@@ -84,14 +91,18 @@ apt-get install nfs-common
 ```
 
  - Crie uma pasta pra montar
-```mkdir /var/www/sneplivre/arquivos/viaRede-POA```
+```
+mkdir /var/www/sneplivre/arquivos/viaRede-POA
+```
 
  - Monte e seja feliz
-```mount 192.168.1.18:/var/www/snep/arquivos/gravacoesCTB /var/www/sneplivre/arquivos/viaRede-POA/
+```
+mount 192.168.1.18:/var/www/snep/arquivos/gravacoesCTB /var/www/sneplivre/arquivos/viaRede-POA/
 ```
 
  - Se quiser fazer mais bonitinho e colocar no fstab
-```192.168.1.18:/var/www/snep/arquivos/gravacoesCTB /var/www/sneplivre/arquivos/viaRede-POA/	nfs rw,sync,hard,intr 0 0
+```
+192.168.1.18:/var/www/snep/arquivos/gravacoesCTB /var/www/sneplivre/arquivos/viaRede-POA/	nfs rw,sync,hard,intr 0 0
 ```
 
 ### Random
