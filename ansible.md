@@ -14,6 +14,23 @@
         yum: name=httpd state=latest
 ```
 
+### Task example
+
+```
+--- 
+- hosts: group2
+  remote_user: root
+  tasks: 
+  - name: Ensure postgresql is at the latest
+    yum: 
+      name: postgresql
+      state: latest
+  - name: Ensure that postgresql is started
+    service:
+      name: postgresql
+      state: started
+```
+
 ### Install packages
 
 ```
@@ -110,5 +127,45 @@ class: "{{nome_turma}}"
 ```
 ansible-playbook playbook.yml --extra-vars "nome_turma='Curso Ansible'"
 ```
+
+**Variaveis Facts**
+
+```
+ansible hostname -m setup
+```
+
+### Roles
+
+Estructure:
+
+```
+roles/
+	webservers/
+		tasks/
+		handlers/
+		files/
+		templates/
+		vars/
+		defaults/
+		meta/
+```
+
+*Tasks*
+Contem a lista das principais tasks a serem executadas no host
+
+*Handlers*
+Contem tasks que podem ser usadas para manipular estado de determinado servico
+
+*Defaults*
+Usado para por as variaveis defaults usadas nas tasks da nossa role
+
+*Vars*
+Usado para por variaveis que podem ser consideradas estaticas nas tasks
+
+*Files*
+Contem arquivos que podem ser enviados (deploy) para o host
+
+*Meta*
+Define metadata para a role em questao.
 
 
