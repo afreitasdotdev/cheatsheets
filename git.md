@@ -5,6 +5,16 @@ commit:		Aplicar/Gravas as mudanças realizadas
 
 
 
+# Criar repo via linha de comando
+echo "# devops-hero" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:afreitasdotdev/devops-hero.git
+git push -u origin master
+
+
+
 Comandos:
 
 git init . 			
