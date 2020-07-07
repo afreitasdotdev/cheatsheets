@@ -1,5 +1,84 @@
 # ANSIBLE
 
+# Basic steps
+
+
+Boas praticas (exemplos do jenkins with ansible south)
+
+projeto
+|__handlers
+|  |__main.yml
+|__tasks
+|  |__main.yml
+|  |__task1.yml
+|  |__task2.yml
+|__vars
+|  |__main.yml
+
+handler: gerenciar o daemon/processo de um serviço/app. Sempre acionado com um notify em alguma ação do ansible.
+tasks: Procedimentos que devem ser executados.
+
+
+Iniciar um novo playbook: 
+
+```
+ansible-galaxy init nome-do-projeto
+```
+
+Dentro do dir "tasks" criar os arquivos yml com as configurações necessarias.
+
+Adicionar repo e executar update:
+
+```
+---
+- apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu bionic stable
+    validate_certs: yes
+    state: present
+    update_cache: yes
+```
+
+Instalar pacotes/deps
+
+```
+---
+- name: Instando Docker 
+  hosts: vuepress
+  become: yes
+  tasks:
+    - name: Instalando pacotes base 
+      apt:
+        state: present
+        update_cache: yes
+        install_recommends: yes
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg-agent
+          - software-properties-common
+```
+
+Criar arquivo playbook.yml 
+
+```
+---
+ - include: docker-packages.yml
+ - include: docker-install.yml
+```
+
+No diretório anterior, criar o arquivo hosts, dessa forma: 
+
+```
+[jenkins]
+ec2-3-83-16-248.compute-1.amazonaws.com ansible_user=ubuntu
+```
+
+Para executar: 
+
+
+
+
 ## Playbooks
 
 ### Playbook example
