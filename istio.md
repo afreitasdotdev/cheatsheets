@@ -183,7 +183,47 @@ spec:
 
 kubectl apply -f kiali.yaml 
 
-# tip: If your instance not have external ip, you can connect using ssh. Use the port 7777 to connect at port 31380.
-# ssh ubuntu@ip -A -L7777:localhost:31380 
-# Open in your browser, localhost: 7777
-# Log in Kiali using user and password created before.
+  > **_NOTE:_** If your instance not have external ip, you can connect using ssh. Use the port 7777 to connect at port 31380.
+  > ssh ubuntu@ip -A -L7777:localhost:31380 
+  > Open in your browser, localhost: 7777
+  > Log in Kiali using user and password created before.
+
+------
+
+# ISTIO WITH AWS EKS
+
+ 1251  ./deploy.sh -e t3.medium us-east-1 payer-bucket eks-payer eks-poc-istio eks-poc-istio-node
+ 1252  kubectl get deploy apache
+ 1253  kubectl get service
+ 1254  vi deployment.yml 
+ 1255  k apply -f deployment.yml 
+ 1256  vi deployment.yml 
+ 1257  k get deploy
+ 1258  k delete deploy apache
+ 1259  k get deploy 
+ 1260  k get svc
+ 1261  vi deployment.yml 
+ 1262  istioctl version --remote=false
+ 1263  istioctl manifest apply --set profile=demo
+ 1264  kubectl -n istio-system get svc
+ 1265  k get svc
+ 1266  kubectl label namespace default istio-injection=enabled
+ 1267  kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+ 1268  cd ../../setup/istio/environment/istio-1.5.2/
+ 1269  ls
+ 1270  kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+ 1271  kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+ 1272  kubectl -n istio-system get pods
+ 1273  kubectl get svc istio-ingressgateway -n istio-system
+ 1274  k get svc
+ 1275  kubectl -n istio-system get svc
+ 1276  export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+ 1277  export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
+ 1278  export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].port}')
+ 1279  export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+ 1280  export INGRESS_HOST=$(kubectl get po -l istio=ingressgateway -n istio-system -o jsonpath='{.items[0].status.hostIP}')
+ 1281  echo http://$GATEWAY_URL/productpage
+ 1282  export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
+ 1283  echo $GATEWAY_URL
+ 1284  echo http://$GATEWAY_URL/productpage
+ 1285  bin/.istioctl dashboard kiali

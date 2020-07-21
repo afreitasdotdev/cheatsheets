@@ -1,19 +1,54 @@
 # ANSIBLE
 
+
+# Directory estruture
+
+defaults/main.yml       ->         Save all variables
+handlers/main.yml       ->         Create handlers to restart services
+library/                ->         Save extern scripts
+meta/main.yml          ->         Users and company details 
+tasks/                  ->         Create all activities to run in your hosts
+templates/              ->         Save files to change in hosts
+tasks/main.yml         ->         File to import your tasks in order to execute
+
+Ever generate .gitignore
+Readme
+
+
+# Handler example
+
+- name: mongodb reload
+  service:
+    name: mongod
+    state: reloaded
+    enabled: true
+
+- name: systemd reload
+  shell: systemctl daemon-reload
+
+
 # Basic steps
 
 
 Boas praticas (exemplos do jenkins with ansible south)
 
-projeto
-|__handlers
-|  |__main.yml
-|__tasks
-|  |__main.yml
-|  |__task1.yml
-|  |__task2.yml
-|__vars
-|  |__main.yml
+tree ../../jenkins/setup/ansible/
+../../jenkins/setup/ansible/
+├── hosts
+├── playbook.yml
+├── README.md
+└── roles
+    └── install_docker
+        ├── defaults
+        │   └── main.yml
+        ├── handlers
+        │   └── main.yml
+        └── tasks
+            ├── config_repos.yml
+            ├── install_dependencies.yml
+            ├── install_docker.yml
+            └── main.yml
+
 
 handler: gerenciar o daemon/processo de um serviço/app. Sempre acionado com um notify em alguma ação do ansible.
 tasks: Procedimentos que devem ser executados.
@@ -76,7 +111,7 @@ ec2-3-83-16-248.compute-1.amazonaws.com ansible_user=ubuntu
 
 Para executar: 
 
-
+ansible-playbook playbook.yml -i hosts -vvv
 
 
 ## Playbooks
