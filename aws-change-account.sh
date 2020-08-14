@@ -6,6 +6,7 @@ while [ "$1" != "" ]; do
             echo "
             export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id --profile payer)
             export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key --profile payer)
+	    terraform init -backend-config="bucket=payer-bucket" -backend-config="key=payer-eks-nlb" -backend-config="region=us-east-1" -backend-config="profile=payer" -force-copy
             "
             exit
         ;;
